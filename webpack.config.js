@@ -9,7 +9,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 var pluginsConfig = [
 	new webpack.optimize.CommonsChunkPlugin({
 		name: "vendor",
-		minChunks: function(module) {
+		minChunks: function (module) {
 			return module.context && module.context.indexOf("node_modules") !== -1;
 		}
 	}),
@@ -31,17 +31,21 @@ var pluginsConfig = [
 
 module.exports = {
 	entry: {
-		'index':'./src/index.js'
+		'index': './src/index.js'
 	},
 	output: {
 		filename: 'bundle/[name].js',
 		chunkFilename: 'bundle/[name].js',
 		path: path.resolve(__dirname, 'out'),
-		publicPath:'/'
+		publicPath: '/'
 	},
 	devServer: {
-		//host: '192.168.1.61',
-		contentBase: 'out'
+		contentBase: 'out',
+		proxy: [{
+			context: ["/shangge"],
+			target: "http://106.14.30.113:8181",
+			changeOrigin: true
+		}]
 	},
 	devtool: 'inline-source-map',
 	module: {

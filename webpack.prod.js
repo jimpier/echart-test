@@ -10,9 +10,6 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 //插件列表
 var pluginsConfig = [
 	new UglifyJSPlugin({
-		compress: {
-			warnings: false
-		},
 		sourceMap: true
 	}),
 	new webpack.DefinePlugin({
@@ -38,8 +35,8 @@ var pluginsConfig = [
 		filename: 'index.html',
 		template: 'src/index.html',
 		chunks: ['vendor', 'index'],
-	}),
-];
+	})
+]
 
 module.exports = {
 	entry: {
@@ -51,7 +48,7 @@ module.exports = {
 		path: path.resolve(__dirname, 'out'),
 		publicPath: '/test/'
 	},
-	devtool: 'inline-source-map',
+	devtool: 'source-map',
 	module: {
 		rules: [{
 			test: /\.(png|jpg|gif)$/,
@@ -73,9 +70,8 @@ module.exports = {
 			})
 		}, {
 			test: /\.js$/,
-			// exclude: /node_modules(?![\\/]vue-echarts[\\/])/,
+			exclude: /(node_modules|bower_components)/,
 			loader: 'babel-loader',
-			include: [resolve('src'), resolve('test'), resolve('node_modules/vue-echarts'), resolve('node_modules/resize-detector')]
 		}, {
 			test: /\.vue$/,
 			loader: 'vue-loader'
@@ -89,6 +85,6 @@ module.exports = {
 			'vue$': 'vue/dist/vue.esm.js'
 		}
 	},
-	plugins: pluginsConfig,
-};
+	plugins: pluginsConfig
+}
 

@@ -1,12 +1,17 @@
 {
 	"presets": [
-		["env", {
-			"modules": false
-		}],"stage-2" 
+		[
+			"env",
+			{
+				"modules": false
+			}
+		],
+		"stage-2"
 	],
 	"plugins": [
 		[
-			"transform-runtime", {
+			"transform-runtime",
+			{
 				"helpers": false,
 				"polyfill": false,
 				"regenerator": true,
@@ -14,11 +19,14 @@
 			}
 		],
 		[
-			"component", 
-			[{
-				"libraryName": "element-ui",
-				"styleLibraryName": "theme-chalk"
-			}]
-		], "syntax-dynamic-import"
+			"component",
+			[
+				{
+					"libraryName": "element-ui",
+					"styleLibraryName": "theme-chalk"
+				}
+			]
+		],
+		"syntax-dynamic-import"
 	]
 }

@@ -1,17 +1,18 @@
 <template>
-  <div class="sg-system-index-box">
-    <echart :options="options" class="charts" ref="chart4"></echart>
+  <div>
+    <echart :options="options"></echart>
   </div>
 </template>
 <script>
-import Vue from 'vue'
-import ECharts from 'vue-echarts/components/ECharts.vue'
+import echart from 'vue-echarts/components/ECharts.vue'
 import 'echarts/lib/chart/pie'
 import 'echarts/lib/component/tooltip'
 import 'echarts/lib/component/legend'
 import 'echarts/lib/component/title'
-Vue.component('echart', ECharts)
 export default {
+  components: {
+    echart
+  },
   data() {
     let options = {
       title: {
@@ -31,7 +32,7 @@ export default {
         align: 'left',
         itemWidth: 8,
         itemHeight: 8,
-        data:['智能家居', '个人护理']
+        data: ['智能家居', '个人护理']
       },
       toolbox: {//工具栏 
         show : true,
@@ -54,9 +55,9 @@ export default {
             }
           },
           data:[{
-            name: '智能家居', value: 123
+            name: '智能家居', value: 11
           }, {
-            name: '个人护理', value: 456
+            name: '个人护理', value: 22
           }]
         }
       ]
